@@ -150,6 +150,8 @@ class FilmController extends Controller
             Storage::delete($film->foto);
 
             $film->delete();
+            $film->aktor()->detach();
+            $film->genre()->detach();
 
             return response()->json([
                 'success' => true,
